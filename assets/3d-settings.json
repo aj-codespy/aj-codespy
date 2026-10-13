@@ -1,0 +1,24 @@
+[
+  {
+    "type": "normal",
+    "fileName": "city-light.svg",
+    "backgroundColor": "#f6f4ef",
+    "foregroundColor": "#10204a",
+    "strongColor": "#c2410c",
+    "weakColor": "#5d6883",
+    "radarColor": "#c2410c",
+    "growingAnimation": true,
+    "contribColors": ["#e4e0d6", "#f3c4a3", "#e8925f", "#d9662c", "#c2410c"]
+  },
+  {
+    "type": "normal",
+    "fileName": "city-dark.svg",
+    "backgroundColor": "#0d1e42",
+    "foregroundColor": "#eef2fb",
+    "strongColor": "#ff8a4c",
+    "weakColor": "#94a2c3",
+    "radarColor": "#ff8a4c",
+    "growingAnimation": true,
+    "contribColors": ["#1a3166", "#6b4a45", "#b5603a", "#e57540", "#ff8a4c"]
+  }
+]
