@@ -132,40 +132,21 @@ const HERO = {
 };
 
 const SECTIONS = {
-  about: ["01", "About", "The person behind the drawings."],
-  experience: ["02", "Experience", "Revision history."],
-  stack: ["03", "Stack", "Tools I work with."],
-  wins: ["04", "Awards", "Nine wins, built under pressure."],
-  activity: ["05", "Activity", "Contribution record."],
-  contact: ["06", "Contact", "Let’s build something."],
+  experience: ["01", "Experience", "Where I’ve worked."],
+  stack: ["02", "Stack", "Tools I work with."],
+  wins: ["03", "Awards", "Nine wins, built under pressure."],
+  activity: ["04", "Activity", "Contribution record."],
+  contact: ["05", "Contact", "Let’s build something."],
 };
+const SHEETS = String(Object.keys(SECTIONS).length).padStart(2, "0");
 
+// Newest first: [position, company, when].
 const EXPERIENCE = [
-  {
-    rev: "E", when: "Now", role: "SDE, AI", org: "Voiceqube", current: true,
-    summary: "Software engineer on the AI team, building production AI systems.",
-    tags: ["Python", "LLMs", "AI agents"],
-  },
-  {
-    rev: "D", when: "Jan – Apr 2026", role: "AI Engineering Intern", org: "Aligned Automation",
-    summary: "Built an agentic validation engine on LangGraph: a supervisor routes data to specialist validators and sends failures to a fixer agent, in a loop, until the data is clean.",
-    points: [["80%", "of validation automated"], ["−30%", "data quality issues"], ["100 GB+", "NASCAR data processed"], ["+40%", "pipeline efficiency"]],
-  },
-  {
-    rev: "C", when: "2026", role: "Founder, solo engineer", org: "getPlaced",
-    summary: "Designed, built and launched an AI resume builder end to end: Next.js, FastAPI, an LLM agent pipeline and Firebase.",
-    points: [["5,000+", "users"]],
-  },
-  {
-    rev: "B", when: "2024 – 2025", role: "Hackathons", org: "9 competition wins",
-    summary: "36-hour builds: generative-AI agent pipelines, predictive models and data dashboards, shipped under pressure and pitched to judges.",
-    tags: ["GenAI", "ML", "Data"],
-  },
-  {
-    rev: "A", when: "Aug – Nov 2024", role: "ML Intern", org: "RHV Group",
-    summary: "Built recommendation models and cleaner sales data pipelines, and presented the findings to clients in Power BI.",
-    points: [["+15%", "user engagement"], ["+20%", "analytical accuracy"], ["−25%", "data prep time"], ["3", "client projects won"]],
-  },
+  ["SDE, AI", "Voiceqube", "Now"],
+  ["Freelance AI engineer", "HireLoop", "Now"],
+  ["AI Engineering Intern", "Aligned Automation", "Jan – Apr 2026"],
+  ["Founder & solo engineer", "getPlaced", "2026"],
+  ["ML Intern", "RHV Group", "Aug – Nov 2024"],
 ];
 
 const WINS = [
@@ -255,7 +236,7 @@ function header(t) {
   b += `<path d="M${px + kw + 0.5} ${ty + 1}V${ty + (rows - 1) * rh}" stroke="${t.line}"/>`;
   const sy = ty + (rows - 1) * rh;
   b += `<path d="M${px + 1} ${sy + 0.5}H${px + pw - 1}M${px + pw / 2 + 0.5} ${sy}V${sy + rh}" stroke="${t.line}"/>`;
-  b += label(px + 11, sy + 18.5, "Sheet", t.muted, { size: 10.5 }) + text(px + 66, sy + 18.5, "00 of 06", "M", 12.5, t.ink);
+  b += label(px + 11, sy + 18.5, "Sheet", t.muted, { size: 10.5 }) + text(px + 66, sy + 18.5, `00 of ${SHEETS}`, "M", 12.5, t.ink);
   b += label(px + pw / 2 + 11, sy + 18.5, "Rev", t.muted, { size: 10.5 }) + text(px + pw / 2 + 50, sy + 18.5, REV, "M", 12.5, t.ink);
 
   return doc(W, H, b, `.pulse{animation:p 2.4s ease-in-out infinite}@keyframes p{50%{opacity:.25}}${reduced}`);
@@ -264,54 +245,35 @@ function header(t) {
 function sectionHead([n, name, title], t) {
   const H = 92;
   let b = label(2, 22, `${n}  ${name}`, t.accent, { size: 12.5 });
-  b += label(W - 2, 22, `Sheet ${n} of 06`, t.muted, { size: 11, anchor: "end" });
+  b += label(W - 2, 22, `Sheet ${n} of ${SHEETS}`, t.muted, { size: 11, anchor: "end" });
   b += text(0, 62, title, "D", 31, t.ink, { ls: -0.025 });
   b += `<path d="M0 82.5H${W}" stroke="${t.line}"/><path d="M.5 77V88M${W - 0.5} 77V88" stroke="${t.ink}"/>`;
   return doc(W, H, b);
 }
 
 function experience(t) {
-  const X = { rev: 30, when: 68, desc: 190, pts: 556 };
-  const descW = X.pts - X.desc - 30, ptsW = W - X.pts - 28;
-  const rows = EXPERIENCE.map((e) => {
-    const sum = wrap(e.summary, "T", 14, descW);
-    const pts = (e.points ?? []).map(([m, k]) => [m, wrap(k, "T", 13.5, ptsW - 86)]);
-    const left = 24 + 20 + sum.length * 21 + 4;
-    const right = e.points ? pts.reduce((s, [, k]) => s + 4 + k.length * 19, 0) + 2 : 24;
-    return { e, sum, pts, h: Math.max(left, right) + 22 };
-  });
-  const top = 64;
-  const H = top + rows.reduce((s, x) => s + x.h, 0) + 20;
+  const X = { rev: 30, role: 76, org: 420 }, top = 64, rh = 54;
+  const H = top + EXPERIENCE.length * rh + 26;
   let b = sheet(W, H, t);
   b += label(X.rev - 2, 48, "Rev", t.muted, { size: 11 });
-  b += label(X.when, 48, "Date", t.muted, { size: 11 });
-  b += label(X.desc, 48, "Change", t.muted, { size: 11 });
-  b += label(X.pts, 48, "Measured", t.muted, { size: 11 });
+  b += label(X.role, 48, "Position", t.muted, { size: 11 });
+  b += label(X.org, 48, "Company", t.muted, { size: 11 });
+  b += label(W - 28, 48, "When", t.muted, { size: 11, anchor: "end" });
+  b += `<path d="M28 ${top - 0.5}H${W - 28}M${X.org - 20.5} ${top}V${top + EXPERIENCE.length * rh}" stroke="${t.line}"/>`;
   b += `<path d="M28 ${top - 0.5}H${W - 28}" stroke="${t.ink}"/>`;
-
-  let y = top;
-  rows.forEach(({ e, sum, pts, h }, i) => {
+  EXPERIENCE.forEach(([role, org, when], i) => {
+    const y = top + i * rh, mid = y + rh / 2;
+    const now = when === "Now";
+    const c = now ? t.accent : t.ink;
     if (i) b += `<path d="M28 ${y + 0.5}H${W - 28}" stroke="${t.line2}"/>`;
-    const c = e.current ? t.accent : t.ink;
-    b += `<circle cx="${X.rev + 11}" cy="${y + 30}" r="12.5" stroke="${c}" ${e.current ? `fill="${t.accentSoft}"` : ""}/>`;
-    b += text(X.rev + 11, y + 35, e.rev, "MM", 13, c, { anchor: "middle" });
-    b += text(X.when, y + 35, e.when, "M", 12.5, e.current ? t.accent : t.muted);
-    b += text(X.desc, y + 36, e.role, "TM", 16.5, t.ink);
-    b += label(X.desc + measure(e.role, "TM", 16.5) + 10, y + 35, `· ${e.org}`, t.accent, { size: 11.5 });
-    sum.forEach((line, j) => (b += text(X.desc, y + 60 + j * 21, line, "T", 14, t.ink2)));
-    let py = y + 36;
-    if (e.points) {
-      for (const [m, k] of pts) {
-        b += text(X.pts, py, m, "D", 16, t.accent, { ls: -0.02 });
-        k.forEach((line, j) => (b += text(X.pts + 86, py + j * 19, line, "T", 13.5, t.ink2)));
-        py += 4 + k.length * 19;
-      }
-    } else {
-      b += label(X.pts, py - 1, e.tags.join(" · "), t.muted, { size: 11 });
-    }
-    y += h;
+    b += `<circle cx="${X.rev + 11}" cy="${mid}" r="12.5" stroke="${c}"${now ? ` fill="${t.accentSoft}"` : ""}/>`;
+    b += text(X.rev + 11, mid + 4.5, String.fromCharCode(64 + EXPERIENCE.length - i), "MM", 13, c, { anchor: "middle" });
+    b += text(X.role, mid + 6, role, "TM", 17, t.ink);
+    b += text(X.org, mid + 6, org, "D", 17, t.ink, { ls: -0.01 });
+    if (now) b += `<circle class="pulse" cx="${W - 28 - measure("NOW", "MM", 12, 0.08) - 12}" cy="${mid}" r="3.5" fill="${t.accent}"/>`;
+    b += label(W - 28, mid + 4.5, when, now ? t.accent : t.muted, { anchor: "end" });
   });
-  return doc(W, H, b);
+  return doc(W, H, b, `.pulse{animation:p 2.4s ease-in-out infinite}@keyframes p{50%{opacity:.25}}${reduced}`);
 }
 
 function wins(t) {
