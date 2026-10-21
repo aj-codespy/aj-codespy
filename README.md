@@ -16,7 +16,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/experience-dark.svg">
-  <img width="100%" alt="Experience: SDE, AI at Voiceqube (now). Freelance AI engineer on HireLoop (now). AI Engineering Intern at Aligned Automation (Jan to Apr 2026). Founder and solo engineer of getPlaced (2026). ML Intern at RHV Group (Aug to Nov 2024)." src="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/experience-light.svg">
+  <img width="100%" alt="Experience: SDE, AI at Voiceqube (now). AI Engineering Intern at Aligned Automation (Jan to Apr 2026). Founder and solo engineer of getPlaced (2026). ML Intern at RHV Group (Aug to Nov 2024)." src="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/experience-light.svg">
 </picture>
 
 <br><br>
@@ -42,31 +42,14 @@
 
 <br>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/head-wins-dark.svg">
-  <img width="100%" alt="03 Awards: nine wins, built under pressure." src="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/head-wins-light.svg">
-</picture>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/wins-dark.svg">
-  <img width="100%" alt="1st at the Databot AI Hackathon, IIIT Kottayam. 1st at the SBUP College Datathon. 2nd at Mindspark 2025, COEP Pune. Wins at Startup Ideathon 2025, Quizatron, the IIT Goa Datathon, CodeVerse 2024, the PICT Datathon and the COEP Dashboard Competition 2024." src="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/wins-light.svg">
-</picture>
+### Open Source Contributions
+[![Contributor](https://img.shields.io/badge/1st%20PR%20MERGED-KESTRA-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://kestra.io/community?from=github-badge)
 
 <br><br>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/head-activity-dark.svg">
-  <img width="100%" alt="04 Activity: contribution record." src="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/head-activity-light.svg">
-</picture>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/streak-dark.svg">
-  <img width="100%" alt="Total contributions, current streak and longest streak." src="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/streak-light.svg">
-</picture>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/activity-dark.svg">
-  <img width="100%" alt="Daily contributions over the last 60 days." src="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/activity-light.svg">
+  <img width="100%" alt="03 Activity: contribution record." src="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/head-activity-light.svg">
 </picture>
 
 <picture>
@@ -88,7 +71,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/head-contact-dark.svg">
-  <img width="100%" alt="05 Contact: let's build something." src="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/head-contact-light.svg">
+  <img width="100%" alt="04 Contact: let's build something." src="https://raw.githubusercontent.com/aj-codespy/aj-codespy/output/head-contact-light.svg">
 </picture>
 
 Hiring for an AI engineering role, or need something built? Email is the fastest way to reach me.

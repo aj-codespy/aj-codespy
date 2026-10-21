@@ -4,7 +4,7 @@
 //
 // The GitHub Action runs this every day and publishes dist/ to the `output` branch, which the
 // README reads from. Edit the content below and push; the Action redraws everything.
-// Without a token only the static sheets are drawn (header, sections, experience, wins, buttons).
+// Without a token only the static sheets are drawn (header, sections, experience, buttons).
 //
 // Each image comes in a light (whiteprint) and dark (blueprint) version. Fonts are embedded,
 // because GitHub serves README images through a proxy that blocks web fonts.
@@ -118,47 +118,22 @@ const HERO = {
   kicker: "Ayush Jha · AI engineer · Pune",
   title: ["I build AI systems", "like it’s my own", "company."],
   lead: "I’m on the AI team at Voiceqube, building multi-agent LLM systems end to end: the agents, the FastAPI services around them and the data underneath. Then I stay for what happens after launch.",
-  proof: [
-    ["getPlaced", "an AI resume tool I built alone, used by 5,000+ people"],
-    ["Aligned Automation", "agents that took over 80% of data validation"],
-  ],
-  block: [
-    ["Drawn by", "Ayush Jha"],
-    ["Discipline", "AI engineering"],
-    ["Currently", "SDE, AI · Voiceqube", true],
-    ["Based in", "Pune, India"],
-    ["Education", "B.E. AI & DS · 2027"],
-  ],
 };
 
 const SECTIONS = {
   experience: ["01", "Experience", "Where I’ve worked."],
   stack: ["02", "Stack", "Tools I work with."],
-  wins: ["03", "Awards", "Nine wins, built under pressure."],
-  activity: ["04", "Activity", "Contribution record."],
-  contact: ["05", "Contact", "Let’s build something."],
+  activity: ["03", "Activity", "Contribution record."],
+  contact: ["04", "Contact", "Let’s build something."],
 };
 const SHEETS = String(Object.keys(SECTIONS).length).padStart(2, "0");
 
 // Newest first: [position, company, when].
 const EXPERIENCE = [
   ["SDE, AI", "Voiceqube", "Now"],
-  ["Freelance AI engineer", "HireLoop", "Now"],
   ["AI Engineering Intern", "Aligned Automation", "Jan – Apr 2026"],
   ["Founder & solo engineer", "getPlaced", "2026"],
   ["ML Intern", "RHV Group", "Aug – Nov 2024"],
-];
-
-const WINS = [
-  ["1st", "Databot AI Hackathon", "IIIT Kottayam"],
-  ["1st", "Datathon", "SBUP College"],
-  ["2nd", "Mindspark 2025", "COEP Pune"],
-  ["Win", "Startup Ideathon 2025", "JSPM Tathwade"],
-  ["Win", "Quizatron", "MMCOE Dexterity 2025"],
-  ["Win", "IIT Goa Datathon", "IIT Goa"],
-  ["Win", "CodeVerse 2024", "MMCOE"],
-  ["Win", "Datathon", "PICT Pune"],
-  ["Win", "Dashboard Competition 2024", "COEP Pune"],
 ];
 
 const BUTTONS = [
@@ -173,16 +148,15 @@ const BUTTONS = [
 // ───────────────────────── Static sheets ─────────────────────────
 
 function header(t) {
-  const H = 540;
-  const L = 44, LW = 424;
-  let b = sheet(W, H, t);
+  const L = 44, pw = 220, ph = 246, px = W - 74 - pw;
+  const LW = px - L - 40;
 
-  // Left: the hero copy, vertically centred.
+  // Left: the hero copy, vertically centred; the sheet is as tall as the taller column.
   const titleSize = Math.min(48, Math.floor(LW / Math.max(...HERO.title.map((l) => measure(l, "D", 1, -0.03)))));
   const lead = wrap(HERO.lead, "T", 16, LW);
-  const proof = HERO.proof.map(([k, v]) => [k, wrap(v, "T", 14.5, LW - 160)]);
-  const proofH = proof.reduce((s, [, v]) => s + 24 + v.length * 21, 0);
-  const contentH = 18 + 22 + HERO.title.length * titleSize * 1.04 + 20 + lead.length * 25 + 22 + proofH + 40;
+  const contentH = 18 + 22 + HERO.title.length * titleSize * 1.04 + 20 + lead.length * 25 + 22 + 40;
+  const H = Math.ceil(Math.max(contentH + 64, ph + 92));
+  let b = sheet(W, H, t);
   let y = (H - contentH) / 2 + 12;
 
   b += label(L, y, HERO.kicker, t.muted);
@@ -197,17 +171,11 @@ function header(t) {
     b += text(L, y, line, "T", 16, t.ink2);
   }
   y += 22;
-  for (const [k, v] of proof) {
-    b += `<path d="M${L} ${y + 0.5}H${L + LW}" stroke="${t.line}"/>`;
-    b += text(L, y + 24, k, "TM", 14.5, t.ink);
-    v.forEach((line, i) => (b += text(L + 160, y + 24 + i * 21, line, "T", 14.5, t.muted)));
-    y += 24 + v.length * 21;
-  }
   b += `<path d="M${L} ${y + 8.5}H${L + LW}" stroke="${t.line}"/>`;
   b += label(L, y + 40, "hire-aj.space ↗", t.accent);
 
-  // Right: the portrait and its title block.
-  const px = 516, py = 46, pw = 256, ph = 286;
+  // Right: the portrait.
+  const py = Math.round((H - ph) / 2);
   const photo = read("assets/photo.webp").toString("base64");
   b += `<rect x="${px + 0.5}" y="${py + 0.5}" width="${pw - 1}" height="${ph}" fill="${t.node}" stroke="${t.line2}"/>`;
   b += `<clipPath id="pc"><rect x="${px}" y="${py}" width="${pw}" height="${ph}"/></clipPath>`;
@@ -219,27 +187,7 @@ function header(t) {
   const cy = py + ph / 2;
   b += `<g transform="rotate(-90 ${dx} ${cy})"><rect x="${dx - 46}" y="${cy - 9}" width="92" height="18" fill="${t.paper}"/>${label(dx, cy + 4, "Scale 1 : 1", t.muted, { size: 11, anchor: "middle" })}</g>`;
 
-  const ty = py + ph + 1, rh = 28, kw = 90;
-  const rows = HERO.block.length + 1;
-  b += `<rect x="${px + 0.5}" y="${ty + 0.5}" width="${pw - 1}" height="${rows * rh}" fill="${t.paper}" stroke="${t.ink}"/>`;
-  HERO.block.forEach(([k, v, live], i) => {
-    const yy = ty + i * rh;
-    if (i) b += `<path d="M${px + 1} ${yy + 0.5}H${px + pw - 1}" stroke="${t.line}"/>`;
-    b += label(px + 11, yy + 18.5, k, t.muted, { size: 10.5 });
-    let vx = px + kw + 11;
-    if (live) {
-      b += `<circle class="pulse" cx="${vx + 3.5}" cy="${yy + 14}" r="3.5" fill="${t.accent}"/>`;
-      vx += 13;
-    }
-    b += text(vx, yy + 18.5, v, "TM", 13.5, t.ink);
-  });
-  b += `<path d="M${px + kw + 0.5} ${ty + 1}V${ty + (rows - 1) * rh}" stroke="${t.line}"/>`;
-  const sy = ty + (rows - 1) * rh;
-  b += `<path d="M${px + 1} ${sy + 0.5}H${px + pw - 1}M${px + pw / 2 + 0.5} ${sy}V${sy + rh}" stroke="${t.line}"/>`;
-  b += label(px + 11, sy + 18.5, "Sheet", t.muted, { size: 10.5 }) + text(px + 66, sy + 18.5, `00 of ${SHEETS}`, "M", 12.5, t.ink);
-  b += label(px + pw / 2 + 11, sy + 18.5, "Rev", t.muted, { size: 10.5 }) + text(px + pw / 2 + 50, sy + 18.5, REV, "M", 12.5, t.ink);
-
-  return doc(W, H, b, `.pulse{animation:p 2.4s ease-in-out infinite}@keyframes p{50%{opacity:.25}}${reduced}`);
+  return doc(W, H, b);
 }
 
 function sectionHead([n, name, title], t) {
@@ -274,23 +222,6 @@ function experience(t) {
     b += label(W - 28, mid + 4.5, when, now ? t.accent : t.muted, { anchor: "end" });
   });
   return doc(W, H, b, `.pulse{animation:p 2.4s ease-in-out infinite}@keyframes p{50%{opacity:.25}}${reduced}`);
-}
-
-function wins(t) {
-  const cols = 3, cw = (W - 56) / cols, ch = 76, top = 28;
-  const H = top + Math.ceil(WINS.length / cols) * ch + 28;
-  let b = sheet(W, H, t);
-  WINS.forEach(([place, event, where], i) => {
-    const x = 28 + (i % cols) * cw, y = top + Math.floor(i / cols) * ch;
-    if (i % cols) b += `<path d="M${x + 0.5} ${y + 14}V${y + ch - 14}" stroke="${t.line2}"/>`;
-    if (i >= cols) b += `<path d="M${x + 12} ${y + 0.5}H${x + cw - 12}" stroke="${t.line2}"/>`;
-    const top3 = place !== "Win";
-    b += text(x + 18, y + 47, place, "D", top3 ? 26 : 19, top3 ? t.accent : t.ink, { ls: -0.03 });
-    const ex = x + 80;
-    b += text(ex, y + 34, event, "TM", measure(event, "TM", 14.5) > cw - 96 ? 13 : 14.5, t.ink);
-    b += label(ex, y + 54, where, t.muted, { size: 10.5 });
-  });
-  return doc(W, H, b);
 }
 
 function button(lbl, primary, t) {
@@ -360,12 +291,6 @@ async function fetchStats() {
   };
 }
 
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const fmt = (iso, year = false) => {
-  const [y, m, d] = iso.slice(0, 10).split("-");
-  return `${MONTHS[+m - 1]} ${+d}${year ? ` ${y}` : ""}`;
-};
-const range = (s) => (s.n ? (s.start === s.end ? fmt(s.start, true) : `${fmt(s.start)} – ${fmt(s.end, true)}`) : "Start one today");
 const num = (n) => n.toLocaleString("en-US");
 
 function caption(H, fig, title, s, t) {
@@ -374,76 +299,6 @@ function caption(H, fig, title, s, t) {
     text(28 + measure(`FIG. ${fig}`, "MM", 11, 0.08) + 12, H - 22, title, "T", 13, t.muted) +
     label(W - 28, H - 22, `Updated ${s.today}`, t.muted, { size: 10.5, anchor: "end" })
   );
-}
-
-function streak(s, t) {
-  const H = 222, cw = (W - 56) / 3, cy = 96;
-  let b = sheet(W, H, t);
-  b += `<path d="M${28 + cw + 0.5} 40V${H - 58}M${28 + 2 * cw + 0.5} 40V${H - 58}" stroke="${t.line}"/>`;
-  b += `<path d="M28 ${H - 44.5}H${W - 28}" stroke="${t.line2}"/>`;
-  const side = (x, k, v, sub) =>
-    label(x, cy - 34, k, t.muted, { size: 11, anchor: "middle" }) +
-    text(x, cy + 16, v, "D", 38, t.ink, { anchor: "middle", ls: -0.03 }) +
-    label(x, cy + 44, sub, t.muted, { size: 10.5, anchor: "middle" });
-  b += side(28 + cw / 2, "Total contributions", num(s.total), `${fmt(s.created, true)} – today`);
-  b += side(28 + 2.5 * cw, "Longest streak", `${s.longest.n} days`, range(s.longest));
-
-  // The current streak sits in a detail callout, the bubble a drawing uses to point at one part.
-  const mx = W / 2;
-  b += `<circle cx="${mx}" cy="${cy}" r="50" stroke="${t.accent}" stroke-width="1.5" fill="${t.accentSoft}"/>`;
-  b += `<circle class="ring" cx="${mx}" cy="${cy}" r="58" stroke="${t.accent}" stroke-dasharray="3 5" opacity=".7"/>`;
-  b += `<path d="M${mx} ${cy - 66}V${cy - 56}M${mx} ${cy + 56}V${cy + 66}M${mx - 66} ${cy}H${mx - 56}M${mx + 56} ${cy}H${mx + 66}" stroke="${t.accent}"/>`;
-  b += text(mx, cy + 8, s.current.n, "D", 40, t.accent, { anchor: "middle", ls: -0.03 });
-  b += label(mx, cy + 26, s.current.n === 1 ? "day" : "days", t.accent, { size: 10.5, anchor: "middle" });
-  b += label(mx - 86, cy - 4, "Current", t.muted, { size: 11, anchor: "end" });
-  b += label(mx - 86, cy + 12, "streak", t.muted, { size: 11, anchor: "end" });
-  b += label(mx + 86, cy + 4, range(s.current), t.muted, { size: 10.5 });
-  b += caption(H, 1, "Contribution streaks, redrawn every day.", s, t);
-  return doc(W, H, b, `.ring{transform-origin:${mx}px ${cy}px;animation:spin 24s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}${reduced}`);
-}
-
-function activity(s, t) {
-  const N = 60, H = 330;
-  const days = s.days.slice(-N);
-  const x0 = 64, x1 = W - 36, y0 = 72, y1 = H - 86;
-  const max = Math.max(4, ...days.map((d) => d[1]));
-  const step = Math.ceil(max / 4);
-  const top = step * 4;
-  const X = (i) => x0 + (i / (N - 1)) * (x1 - x0);
-  const Y = (v) => y1 - (v / top) * (y1 - y0);
-  const sum = days.reduce((a, d) => a + d[1], 0);
-
-  let b = sheet(W, H, t);
-  b += `<defs><pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V7" stroke="${t.accent}" stroke-opacity=".4"/></pattern></defs>`;
-  b += label(28, 44, `Contributions · last ${N} days`, t.muted, { size: 11 });
-  b += label(W - 28, 44, `${num(sum)} in ${N} days`, t.accent, { size: 11, anchor: "end" });
-  for (let k = 0; k <= 4; k++) {
-    const yy = Math.round(Y(k * step)) + 0.5;
-    b += `<path d="M${x0} ${yy}H${x1}" stroke="${k ? t.line2 : t.line}" ${k ? 'stroke-dasharray="2 4"' : ""}/>`;
-    b += text(x0 - 12, yy + 4, k * step, "M", 11, t.muted, { anchor: "end" });
-  }
-  days.forEach(([d], i) => {
-    if ((N - 1 - i) % 10) return;
-    const xx = Math.round(X(i)) + 0.5;
-    b += `<path d="M${xx} ${y1}V${y1 + 6}" stroke="${t.line}"/>`;
-    b += label(xx, y1 + 22, fmt(d), t.muted, { size: 10.5, anchor: "middle" });
-  });
-  const pts = days.map((d, i) => `${r(X(i))} ${r(Y(d[1]))}`);
-  b += `<path d="M${pts.join("L")}L${x1} ${y1}L${x0} ${y1}Z" fill="url(#hatch)"/>`;
-  b += `<path class="draw" pathLength="1" d="M${pts.join("L")}" stroke="${t.ink}" stroke-width="1.75" stroke-linejoin="round"/>`;
-  days.forEach(([, n], i) => n && (b += `<circle cx="${r(X(i))}" cy="${r(Y(n))}" r="2.6" fill="${t.paper}" stroke="${t.accent}" stroke-width="1.5"/>`));
-
-  // A leader line to the busiest day.
-  const bi = days.reduce((m, d, i) => (d[1] > days[m][1] ? i : m), 0);
-  if (days[bi][1]) {
-    const bx = X(bi), by = Y(days[bi][1]);
-    const left = bx > W - 200;
-    const tx = left ? bx - 40 : bx + 40, ty = Math.max(y0 - 10, by - 22);
-    b += `<path d="M${r(bx)} ${r(by)}L${r(tx)} ${r(ty)}H${r(left ? tx - 8 : tx + 8)}" stroke="${t.accent}"/>`;
-    b += label(left ? tx - 12 : tx + 12, ty + 4, `${days[bi][1]} on ${fmt(days[bi][0])}`, t.accent, { size: 11, anchor: left ? "end" : "start" });
-  }
-  b += caption(H, 2, "Daily contributions, hatched like a section cut.", s, t);
-  return doc(W, H, b, `.draw{stroke-dasharray:1;animation:d 2.2s ease-out backwards}@keyframes d{from{stroke-dashoffset:1}}${reduced}`);
 }
 
 function trophies(s, t) {
@@ -456,32 +311,30 @@ function trophies(s, t) {
     [`${s.longest.n}d`, "Best streak", "in a row"],
     [String(since), "Building since", `${new Date().getUTCFullYear() - since}+ years`],
   ];
-  const H = 252, cw = (W - 56) / items.length, cy = 94;
+  const H = 188, cw = (W - 56) / items.length, cy = 66;
   const tilt = [-7, 4, -3, 6, -5, 3];
   let b = sheet(W, H, t);
   items.forEach(([v, k, sub], i) => {
     const cx = 28 + cw * (i + 0.5);
-    const size = v.length > 4 ? 21 : 26;
+    const size = v.length > 4 ? 15 : 19;
     b += `<g transform="rotate(${tilt[i]} ${cx} ${cy})" opacity=".92">`;
-    b += `<circle cx="${cx}" cy="${cy}" r="48" stroke="${t.accent}" stroke-width="2"/>`;
-    b += `<circle cx="${cx}" cy="${cy}" r="41" stroke="${t.accent}" stroke-width=".75"/>`;
-    b += `<path d="M${cx - 26} ${cy - 16.5}H${cx + 26}M${cx - 26} ${cy + 18.5}H${cx + 26}" stroke="${t.accent}" stroke-width=".75"/>`;
-    b += label(cx, cy - 23, "No.", t.accent, { size: 8.5, anchor: "middle" });
+    b += `<circle cx="${cx}" cy="${cy}" r="34" stroke="${t.accent}" stroke-width="1.75"/>`;
+    b += `<circle cx="${cx}" cy="${cy}" r="29" stroke="${t.accent}" stroke-width=".75"/>`;
+    b += `<path d="M${cx - 19} ${cy - 12}H${cx + 19}M${cx - 19} ${cy + 13}H${cx + 19}" stroke="${t.accent}" stroke-width=".75"/>`;
+    b += label(cx, cy - 16.5, "No.", t.accent, { size: 7.5, anchor: "middle" });
     b += text(cx, cy + size * 0.36, v, "D", size, t.accent, { anchor: "middle", ls: -0.03 });
-    b += label(cx, cy + 31, "aj", t.accent, { size: 8.5, anchor: "middle" });
+    b += label(cx, cy + 23, "aj", t.accent, { size: 7.5, anchor: "middle" });
     b += `</g>`;
-    b += text(cx, cy + 78, k, "TM", 14, t.ink, { anchor: "middle" });
-    b += label(cx, cy + 97, sub, t.muted, { size: 10.5, anchor: "middle" });
+    b += text(cx, cy + 56, k, "TM", 13, t.ink, { anchor: "middle" });
+    b += label(cx, cy + 72, sub, t.muted, { size: 10, anchor: "middle" });
   });
-  b += caption(H, 3, "Inspection stamps, pulled from the GitHub API.", s, t);
+  b += caption(H, 1, "Inspection stamps, pulled from the GitHub API.", s, t);
   return doc(W, H, b);
 }
 
 // ───────────────────────── Main ─────────────────────────
 
-const now = new Date();
-const REV = `${now.getUTCFullYear()}.${String(now.getUTCMonth() + 1).padStart(2, "0")}`;
-const out = join(ROOT, process.argv[2] ?? "dist");
+const out =join(ROOT, process.argv[2] ?? "dist");
 mkdirSync(out, { recursive: true });
 const write = (name, fn) => {
   for (const [k, t] of Object.entries(THEMES)) writeFileSync(join(out, `${name}-${k}.svg`), fn(t));
@@ -491,14 +344,11 @@ const write = (name, fn) => {
 write("header", header);
 for (const [k, v] of Object.entries(SECTIONS)) write(`head-${k}`, (t) => sectionHead(v, t));
 write("experience", experience);
-write("wins", wins);
 for (const [k, lbl, primary] of BUTTONS) write(`btn-${k}`, (t) => button(lbl, primary, t));
 
 if (process.env.GITHUB_TOKEN) {
   const s = await fetchStats();
   console.log(`total ${s.total} · current streak ${s.current.n} · longest ${s.longest.n}`);
-  write("streak", (t) => streak(s, t));
-  write("activity", (t) => activity(s, t));
   write("trophies", (t) => trophies(s, t));
 } else {
   console.warn("No GITHUB_TOKEN, so the live stats were skipped.");
