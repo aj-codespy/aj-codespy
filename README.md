@@ -28,7 +28,7 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=py,ts,js,nextjs,react,fastapi,flutter,firebase,supabase,tailwind,sklearn,git,vercel&theme=dark&perline=13">
+    <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=py%2Cts%2Cjs%2Cnextjs%2Creact%2Cfastapi%2Cflutter%2Cfirebase%2Csupabase%2Ctailwind%2Csklearn%2Cgit%2Cvercel&theme=dark&perline=13">
     <img alt="Python, TypeScript, JavaScript, Next.js, React, FastAPI, Flutter, Firebase, Supabase, Tailwind, scikit-learn, Git, Vercel" src="https://skillicons.dev/icons?i=py,ts,js,nextjs,react,fastapi,flutter,firebase,supabase,tailwind,sklearn,git,vercel&theme=light&perline=13">
   </picture>
 </p>
