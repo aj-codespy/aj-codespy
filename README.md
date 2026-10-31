@@ -45,10 +45,8 @@
 ### Open Source Contributions
 [![Contributor](https://img.shields.io/badge/PR%20MERGED-KESTRA-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://kestra.io/community?from=github-badge)
 [![HostedGPT](https://img.shields.io/badge/PR%20MERGED-HOSTEDGPT-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/AllYourBot/hostedgpt/pull/855)
-[![Kestra Plugin Scripts](https://img.shields.io/badge/PR%20MERGED-KESTRA%20PLUGIN--SCRIPTS-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/kestra-io/plugin-scripts/pull/473)
 [![Tracekit](https://img.shields.io/badge/PR%20MERGED-TRACEKIT-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/Cygnux-Labs/Tracekit/pull/418)
 [![AnythingMCP](https://img.shields.io/badge/PR%20MERGED-ANYTHINGMCP-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/HelpCode-ai/anythingmcp/pull/1276)
-[![Kestra Plugin Elasticsearch](https://img.shields.io/badge/PR%20MERGED-KESTRA%20PLUGIN--ELASTICSEARCH-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/kestra-io/plugin-elasticsearch/pull/157)
 [![OpsiMate](https://img.shields.io/badge/PR%20MERGED-OPSIMATE-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/OpsiMate/OpsiMate/pull/1354)
 
 <br><br>
