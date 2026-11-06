@@ -48,6 +48,7 @@
 [![Tracekit](https://img.shields.io/badge/PR%20MERGED-TRACEKIT-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/Cygnux-Labs/Tracekit/pull/418)
 [![AnythingMCP](https://img.shields.io/badge/PR%20MERGED-ANYTHINGMCP-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/HelpCode-ai/anythingmcp/pull/1276)
 [![OpsiMate](https://img.shields.io/badge/PR%20MERGED-OPSIMATE-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/OpsiMate/OpsiMate/pull/1354)
+[![Corsair](https://img.shields.io/badge/PR%20MERGED-CORSAIR-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/corsairdev/corsair/pull/2046)
 
 <br><br>
 
