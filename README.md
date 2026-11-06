@@ -43,12 +43,12 @@
 <br>
 
 ### Open Source Contributions
-[![Contributor](https://img.shields.io/badge/PR%20MERGED-KESTRA-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://kestra.io/community?from=github-badge)
-[![HostedGPT](https://img.shields.io/badge/PR%20MERGED-HOSTEDGPT-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/AllYourBot/hostedgpt/pull/855)
-[![Tracekit](https://img.shields.io/badge/PR%20MERGED-TRACEKIT-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/Cygnux-Labs/Tracekit/pull/418)
-[![AnythingMCP](https://img.shields.io/badge/PR%20MERGED-ANYTHINGMCP-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/HelpCode-ai/anythingmcp/pull/1276)
-[![OpsiMate](https://img.shields.io/badge/PR%20MERGED-OPSIMATE-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/OpsiMate/OpsiMate/pull/1354)
-[![Corsair](https://img.shields.io/badge/PR%20MERGED-CORSAIR-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/corsairdev/corsair/pull/2046)
+[![Contributor](https://img.shields.io/badge/PR%20MERGED-KESTRA-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/search?q=is%3Apr+is%3Amerged+author%3Aaj-codespy+org%3Akestra-io&type=pullrequests)
+[![HostedGPT](https://img.shields.io/badge/PR%20MERGED-HOSTEDGPT-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/AllYourBot/hostedgpt/pulls?q=is%3Apr+is%3Amerged+author%3Aaj-codespy)
+[![Tracekit](https://img.shields.io/badge/PR%20MERGED-TRACEKIT-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/Cygnux-Labs/Tracekit/pulls?q=is%3Apr+is%3Amerged+author%3Aaj-codespy)
+[![AnythingMCP](https://img.shields.io/badge/PR%20MERGED-ANYTHINGMCP-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/HelpCode-ai/anythingmcp/pulls?q=is%3Apr+is%3Amerged+author%3Aaj-codespy)
+[![OpsiMate](https://img.shields.io/badge/PR%20MERGED-OPSIMATE-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/OpsiMate/OpsiMate/pulls?q=is%3Apr+is%3Amerged+author%3Aaj-codespy)
+[![Corsair](https://img.shields.io/badge/PR%20MERGED-CORSAIR-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/corsairdev/corsair/pulls?q=is%3Apr+is%3Amerged+author%3Aaj-codespy)
 
 <br><br>
 
