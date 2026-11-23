@@ -49,6 +49,9 @@
 [![AnythingMCP](https://img.shields.io/badge/PR%20MERGED-ANYTHINGMCP-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/HelpCode-ai/anythingmcp/pulls?q=is%3Apr+is%3Amerged+author%3Aaj-codespy)
 [![OpsiMate](https://img.shields.io/badge/PR%20MERGED-OPSIMATE-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/OpsiMate/OpsiMate/pulls?q=is%3Apr+is%3Amerged+author%3Aaj-codespy)
 [![Corsair](https://img.shields.io/badge/PR%20MERGED-CORSAIR-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/corsairdev/corsair/pulls?q=is%3Apr+is%3Amerged+author%3Aaj-codespy)
+[![GoFr](https://img.shields.io/badge/PR%20MERGED-GOFR-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/gofr-dev/gofr/pulls?q=is%3Apr+is%3Amerged+author%3Aaj-codespy)
+[![JabRef](https://img.shields.io/badge/PR%20MERGED-JABREF-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/JabRef/jabref/pulls?q=is%3Apr+is%3Amerged+author%3Aaj-codespy)
+[![Repowise](https://img.shields.io/badge/PR%20MERGED-REPOWISE-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://github.com/repowise-dev/repowise/pulls?q=is%3Apr+is%3Amerged+author%3Aaj-codespy)
 
 <br><br>
 
